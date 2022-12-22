@@ -4,15 +4,21 @@ import ListTitle from "@/components/ListTitle.vue"
 import KanbanLogo from "@/components/KanbanLogo.vue"
 import KanbanLabel from "@/components/KanbanLabel.vue"
 import StretchText from "@/components/UI/StretchText.vue"
-import ElipseVertical from "@/components/ICON/ElipseVertical.vue"
+import TheButton from "@/components/Ui/TheButton.vue"
+import ElipseVertical from "@/components/Icon/ElipseVertical.vue"
 import Card from "./components/UI/Card.vue"
 import Themes from "@/components/Themes.vue"
-import Button__1 from "./components/UI/Button__1.vue"
-import { watch, ref } from "vue"
+
+import { watch, ref, computed } from "vue"
 import { useWindowSize } from "@vueuse/core"
 const { width } = useWindowSize()
 
 const isMobile = ref(false)
+
+// const addButton = computed(() => {
+//     if (width.value < 625) isMobile.value = true
+//     else isMobile.value = false
+// })
 
 watch(width, () => {
     if (width.value < 625) isMobile.value = true
@@ -28,22 +34,22 @@ watch(width, () => {
     <KanbanLabel>Learn</KanbanLabel>
     <KanbanLabel active>Study</KanbanLabel>
     <KanbanLabel alternative>+ Create New Board</KanbanLabel>
+    <TheButton>Add</TheButton>
     <Card class="shadow-md">
-        <Button__1 class="py-1">Edit Board</Button__1>
-        <Button__1 class="py-1">Clear Board</Button__1>
-        <Button__1 color="#ea5555" class="py-1">Clear Board</Button__1>
-        <Button__1 color="#ea5555" class="py-1">Clear Board</Button__1>
+        <TheButton class="py-1" type="text">Clear Board</TheButton>
+        <TheButton class="py-1" type="text">Rename Board</TheButton>
+        <TheButton class="py-1" type="text" text-color="red">
+            Delete Board
+        </TheButton>
+        <TheButton class="py-1" type="text" text-color="red">Die</TheButton>
     </Card>
     <ListTitle ball-color="limegreen" :tasks="2">TODO</ListTitle>
     <ListTitle ball-color="orange" :tasks="5">DOING</ListTitle>
     <ListTitle ball-color="red" :tasks="4">DONE</ListTitle>
     <StretchText>Hide Sidebar</StretchText>
     <StretchText>Show Sidebar</StretchText>
-    <div>
-        <Button v-if="isMobile" type="add-mobile"> + Add new task</Button>
-        <Button v-else> + Add new task</Button>
-    </div>
-    <Button> Click </Button>
+
+    <TheButton> Click </TheButton>
     <Task>
         <template #title>Title</template>
         <template #subtasks_count>0 of 1 subtasks</template>

@@ -3,11 +3,9 @@ import { computed } from "vue"
 
 const { active, alternative } = defineProps({
     active: {
-        type: Boolean,
         default: false,
     },
     alternative: {
-        type: Boolean,
         default: false,
     },
 })
