@@ -6,7 +6,6 @@
 
 <style lang="scss" scoped>
 .card {
-    width: 20rem;
     padding: 2.4rem 1.6rem;
     background: var(--color-dark-1);
     border-radius: 0.8rem;

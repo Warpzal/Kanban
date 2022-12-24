@@ -14,16 +14,17 @@ const { tasks, ballColor } = defineProps({
 </script>
 
 <template>
-    <div class="list">
-        <div class="list__ball"></div>
+    <div class="the-list">
+        <div class="the-list__ball"></div>
         <StretchText> <slot></slot>({{ tasks }}) </StretchText>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.list {
+.the-list {
     display: flex;
     gap: 5px;
+    text-transform: uppercase;
     &__ball {
         align-self: center;
         width: 1.5rem;

@@ -69,7 +69,7 @@ const padding = computed(() => {
     color: v-bind(textColor);
     font-weight: bold;
     &:hover {
-        text-decoration: line-through;
+        text-decoration: underline;
     }
 }
 </style>

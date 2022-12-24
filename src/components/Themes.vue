@@ -1,13 +1,38 @@
 <script lang="ts" setup>
-import Moon from "./ICON/Moon.vue"
-import Sun from "./ICON/Sun.vue"
+import Moon from "./Icon/Moon.vue"
+import Sun from "./Icon/Sun.vue"
+import { ref, watch, onMounted } from "vue"
+
+const isDarkMode = ref(
+    localStorage.getItem("dark-mode") === "true" ? true : false
+)
+
+onMounted(() => {
+    if (isDarkMode.value) enableDarkMode()
+    else disableDarkMode()
+})
+
+const enableDarkMode = () => {
+    document.body.classList.add("darkmode")
+    localStorage.setItem("dark-mode", "true")
+}
+
+const disableDarkMode = () => {
+    document.body.classList.remove("darkmode")
+    localStorage.setItem("dark-mode", "false")
+}
+
+watch(isDarkMode, (value) => {
+    if (value) enableDarkMode()
+    else disableDarkMode()
+})
 </script>
 
 <template>
-    <div class="card">
+    <div class="cardx">
         <Sun />
         <label class="switch">
-            <input type="checkbox" />
+            <input v-model="isDarkMode" type="checkbox" />
             <span class="slider round"></span>
         </label>
         <Moon />
@@ -15,13 +40,13 @@ import Sun from "./ICON/Sun.vue"
 </template>
 
 <style lang="scss" scoped>
-.card {
+.cardx {
     display: flex;
     justify-content: center;
     gap: 2rem;
     padding: 1.5rem;
-    width: 20rem;
-    background: var(--color-dark-1);
+    width: 100%;
+    background: var(--color-bg);
     border-radius: 0.6rem;
 }
 /* The switch - the box around the slider */

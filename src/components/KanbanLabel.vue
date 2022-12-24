@@ -12,7 +12,7 @@ const { active, alternative } = defineProps({
 
 const colorscheme_default = {
     background: "transparent",
-    backgroundHover: "white",
+    backgroundHover: "var(--kanban-color-bg)",
     logoHover: "var(--color-primary)",
     titleHover: "var(--color-primary)",
     title: "var(--color-grey)",
@@ -31,8 +31,8 @@ const colorscheme_active = {
 const colorscheme_alternative = {
     background: "transparent",
     backgroundHover: "transparent",
-    logoHover: "white",
-    titleHover: "white",
+    logoHover: "var(--text-color)",
+    titleHover: "var(--text-color)",
     title: "var(--color-grey)",
     logo: "var(--color-grey)",
 }

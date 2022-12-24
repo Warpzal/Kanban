@@ -1,72 +1,140 @@
 <script lang="ts" setup>
-import Task from "@/components/Task.vue"
-import ListTitle from "@/components/ListTitle.vue"
-import KanbanLogo from "@/components/KanbanLogo.vue"
-import KanbanLabel from "@/components/KanbanLabel.vue"
-import StretchText from "@/components/UI/StretchText.vue"
-import TheButton from "@/components/Ui/TheButton.vue"
-import ElipseVertical from "@/components/Icon/ElipseVertical.vue"
-import Card from "./components/UI/Card.vue"
-import Themes from "@/components/Themes.vue"
+import KanbanList from "@/components/KanbanList.vue"
+import TopBar from "@/components/TopBar.vue"
+import KanbanBoards from "./components/KanbanBoards.vue"
+import KanbanLogo from "./components/KanbanLogo.vue"
+import Themes from "./components/Themes.vue"
+import type List from "@/types/List"
 
-import { watch, ref, computed } from "vue"
-import { useWindowSize } from "@vueuse/core"
-const { width } = useWindowSize()
+import { ref } from "vue"
+import StretchText from "./components/UI/StretchText.vue"
 
-const isMobile = ref(false)
-
-// const addButton = computed(() => {
-//     if (width.value < 625) isMobile.value = true
-//     else isMobile.value = false
-// })
-
-watch(width, () => {
-    if (width.value < 625) isMobile.value = true
-    else isMobile.value = false
-})
+const lists = ref<List[]>([
+    {
+        id: "jfdsfla",
+        name: "To-do",
+        color: "cyan",
+        tasks: [
+            {
+                title: "Work on Kanban Board",
+                description: "Please clean the house",
+                subtasks: [],
+                completed: true,
+            },
+        ],
+    },
+    {
+        id: "jdfafdsfla",
+        name: "Doing",
+        color: "yellow",
+        tasks: [
+            {
+                title: "Clean your mom, and project management software",
+                description: "Please lmao lmao clean the house",
+                subtasks: [1, 2, 3],
+                completed: false,
+            },
+            {
+                title: "mom, and project management software",
+                description: "Please lmao lmao clean the house",
+                subtasks: [1, 2, 3],
+                completed: false,
+            },
+            {
+                title: "project management software",
+                description: "Please lmao lmao clean the house",
+                subtasks: [1, 2, 3, 4],
+                completed: false,
+            },
+        ],
+    },
+    {
+        id: "dsafadsf",
+        name: "Done",
+        color: "limegreen",
+        tasks: [
+            {
+                title: "Clean your mom",
+                description: "Please lmao lmao clean the house",
+                subtasks: [1, 2, 3],
+                completed: false,
+            },
+        ],
+    },
+    {
+        id: "dafsdsafadsf",
+        name: "Done",
+        color: "limegreen",
+        tasks: [
+            {
+                title: "Clean your mom",
+                description: "Please lmao lmao clean the house",
+                subtasks: [1, 2, 3],
+                completed: false,
+            },
+        ],
+    },
+])
 </script>
 
 <template>
-    <KanbanLogo />
-    <Themes />
-    <ElipseVertical />
-    <StretchText>ALL BOARDS (3)</StretchText>
-    <KanbanLabel>Learn</KanbanLabel>
-    <KanbanLabel active>Study</KanbanLabel>
-    <KanbanLabel alternative>+ Create New Board</KanbanLabel>
-    <TheButton>Add</TheButton>
-    <Card class="shadow-md">
-        <TheButton class="py-1" type="text">Clear Board</TheButton>
-        <TheButton class="py-1" type="text">Rename Board</TheButton>
-        <TheButton class="py-1" type="text" text-color="red">
-            Delete Board
-        </TheButton>
-        <TheButton class="py-1" type="text" text-color="red">Die</TheButton>
-    </Card>
-    <ListTitle ball-color="limegreen" :tasks="2">TODO</ListTitle>
-    <ListTitle ball-color="orange" :tasks="5">DOING</ListTitle>
-    <ListTitle ball-color="red" :tasks="4">DONE</ListTitle>
-    <StretchText>Hide Sidebar</StretchText>
-    <StretchText>Show Sidebar</StretchText>
-
-    <TheButton> Click </TheButton>
-    <Task>
-        <template #title>Title</template>
-        <template #subtasks_count>0 of 1 subtasks</template>
-    </Task>
-    <Task>
-        <template #title>Title</template>
-        <template #subtasks_count>no subtasks</template>
-    </Task>
+    <div class="layout">
+        <div class="sidebar">
+            <div class="top">
+                <TopBar class="mobile-only" />
+                <KanbanLogo class="desktop-only ml-1 mb-2" />
+                <KanbanBoards class="desktop-only" />
+            </div>
+            <div class="bottom desktop-only">
+                <StretchText class="ml-1 py-1">Hide Sidebar</StretchText>
+                <Themes style="margin: 0 auto; width: 90%" />
+            </div>
+        </div>
+        <main class="main">
+            <TopBar class="desktop-only" />
+            <section class="todos">
+                <KanbanList v-for="list in lists" :list="list" :key="list.id">
+                </KanbanList>
+            </section>
+        </main>
+    </div>
 </template>
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap");
 :root {
     --color-primary: hsl(242, 48%, 58%);
     --color-primary-lighten: hsl(242, 48%, 68%);
+    --color-dark-1: #ffffff;
+    --color-grey: #828fa3;
+    --color-bg: #f4f7fd;
+    --color-light-text: #333;
+    --text-color: #333;
+    --text-color-transparent: rgba(0, 0, 0, 0.1);
+    --kanban-color-bg: hsl(242, 48%, 95%);
+}
+
+.darkmode {
+    --text-color: white;
+    --text-color-transparent: rgba(255, 255, 255, 0.1);
+    --color-primary: hsl(242, 48%, 58%);
+    --color-primary-lighten: hsl(242, 48%, 68%);
     --color-dark-1: #2b2c37;
     --color-grey: #828fa3;
     --color-bg: #20212c;
+    --color-light-text: white;
+    --kanban-color-bg: white;
+}
+
+.mobile-only {
+    @media (min-width: 651px) {
+        display: none !important;
+    }
+}
+
+.desktop-only {
+    @media (max-width: 650px) {
+        display: none !important;
+    }
 }
 
 *,
@@ -77,18 +145,19 @@ watch(width, () => {
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 65%;
+    @media (min-width: 1980px) {
+        font-size: 67%;
+    }
+    @media (min-width: 2400px) {
+        font-size: 70%;
+    }
 }
 
 body {
-    padding: 3rem;
     background: var(--color-bg);
-    color: white;
     font-family: "Plus Jakarta Sans", sans-serif;
-}
-
-#app > :not(:first-child) {
-    margin-top: 20px;
+    color: var(--color-light-text);
 }
 
 .py-1 {
@@ -96,10 +165,65 @@ body {
     padding-bottom: 1rem;
 }
 
+.my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 5rem;
+}
+
+.ml-1 {
+    margin-left: 1.5rem;
+}
+
+.mr-1 {
+    margin-right: 1.5rem;
+}
+
 .shadow-sm {
     box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.05);
 }
 .shadow-md {
     box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
+}
+
+.layout {
+    @media (min-width: 650px) {
+        display: flex;
+    }
+}
+
+.sidebar {
+    flex: 0 0 clamp(25rem, 30%, 28rem);
+    background: var(--color-dark-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--text-color-transparent);
+
+    @media (min-width: 650px) {
+        min-height: 100vh;
+        padding: 3rem 0;
+    }
+}
+
+.main {
+    flex: 0 1 100%;
+    // padding: 2rem;
+}
+
+.todos {
+    padding: 1.5rem 3rem;
+    display: flex;
+    gap: 2rem;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.todos::-webkit-scrollbar {
+    display: none;
 }
 </style>
