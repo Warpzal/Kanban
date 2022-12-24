@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Card from "./UI/Card.vue"
-import TheButton from "./Ui/TheButton.vue"
+import Card from "@/components/Ui/Card.vue"
+import TheButton from "@/components/Ui/TheButton.vue"
 </script>
 <template>
     <Card class="shadow-md">

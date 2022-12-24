@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Moon from "./Icon/Moon.vue"
-import Sun from "./Icon/Sun.vue"
+import Moon from "@/components/Icon/Moon.vue"
+import Sun from "@/components/Icon/Sun.vue"
 import { ref, watch, onMounted } from "vue"
 
 const isDarkMode = ref(

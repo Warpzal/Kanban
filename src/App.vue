@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import KanbanList from "@/components/KanbanList.vue"
-import TopBar from "@/components/TopBar.vue"
-import KanbanBoards from "./components/KanbanBoards.vue"
-import KanbanLogo from "./components/KanbanLogo.vue"
-import Themes from "./components/Themes.vue"
+import KanbanBoards from "@/components/KanbanBoards.vue"
+import KanbanLogo from "@/components/KanbanLogo.vue"
 import type List from "@/types/List"
+import StretchText from "@/components/Ui/StretchText.vue"
+import Themes from "@/components/Themes.vue"
+import TopBar from "@/components/TopBar.vue"
 
 import { ref } from "vue"
-import StretchText from "./components/UI/StretchText.vue"
 
 const lists = ref<List[]>([
     {

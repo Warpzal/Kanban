@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ListTitle from "./ListTitle.vue"
-import Task from "./Task.vue"
+import ListTitle from "@/components/ListTitle.vue"
+import Task from "@/components/Task.vue"
 import type List from "@/types/List"
 
 const { list } = defineProps<{

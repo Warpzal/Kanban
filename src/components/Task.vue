@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Card from "./Ui/Card.vue"
+import Card from "@/components/Ui/Card.vue"
 </script>
 
 <template>
@@ -17,15 +17,17 @@ import Card from "./Ui/Card.vue"
 .task {
     margin-bottom: 1.5rem;
     cursor: pointer;
-    // width: 28rem;
+
     &:hover &__title {
         color: var(--color-primary-lighten);
     }
+
     &__title {
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 2.2rem;
     }
+
     &__subtasks {
         padding-top: 10px;
         font-size: 1.2rem;

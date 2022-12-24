@@ -1,22 +1,24 @@
 <script lang="ts" setup>
-import KanbanBoards from "./KanbanBoards.vue"
-import KanbanMenu from "./KanbanMenu.vue"
-import TheButton from "./Ui/TheButton.vue"
-import ElipseVertical from "./Icon/ElipseVertical.vue"
-import Cheveron from "./Icon/Cheveron.vue"
-import Logo from "./Icon/Logo.vue"
-import Add from "./Icon/Add.vue"
+import KanbanBoards from "@/components/KanbanBoards.vue"
+import KanbanMenu from "@/components/KanbanMenu.vue"
+import TheButton from "@/components/Ui/TheButton.vue"
+import ElipseVertical from "@/components/Icon/ElipseVertical.vue"
+import Cheveron from "@/components/Icon/Cheveron.vue"
+import Logo from "@/components/Icon/Logo.vue"
+import Add from "@/components/Icon/Add.vue"
+import CheveronFlipped from "@/components/Icon/CheveronFlipped.vue"
+import Themes from "@/components/Themes.vue"
+
 import { ref } from "vue"
-import CheveronFlipped from "./Icon/CheveronFlipped.vue"
-import Themes from "./Themes.vue"
 
 const isOpenMenu = ref(false)
 const isOpenKanbanBoards = ref(false)
 
 const toggleMenu = () => (isOpenMenu.value = !isOpenMenu.value)
 
-const toggleKanbanBoards = () =>
-    (isOpenKanbanBoards.value = !isOpenKanbanBoards.value)
+const toggleKanbanBoards = () => {
+    isOpenKanbanBoards.value = !isOpenKanbanBoards.value
+}
 </script>
 
 <template>
@@ -28,17 +30,22 @@ const toggleKanbanBoards = () =>
         ></div>
         <div v-show="isOpenMenu" @click="toggleMenu" class="overlay"></div>
         <div class="header__left ml-1">
-            <Logo />
+            <Logo class="mobile-only" />
 
-            <h1 @click="toggleKanbanBoards">Example Board</h1>
+            <h1 class="mobile-only" @click="toggleKanbanBoards">
+                Example Board
+            </h1>
+            <h1 class="desktop-only">Example Board</h1>
 
             <Cheveron
+                class="mobile-only"
                 @click="toggleKanbanBoards"
                 v-show="!isOpenKanbanBoards"
                 style="margin-top: 0.8rem"
             />
 
             <CheveronFlipped
+                class="mobile-only"
                 @click="toggleKanbanBoards"
                 v-show="isOpenKanbanBoards"
                 style="margin-top: 0.8rem"
@@ -113,6 +120,7 @@ const toggleKanbanBoards = () =>
     border-bottom: 1px solid var(--text-color-transparent);
     h1 {
         user-select: none;
+        font-size: 2.4rem;
     }
     &__left {
         position: relative;

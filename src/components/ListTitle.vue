@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import StretchText from "./UI/StretchText.vue"
+import StretchText from "@/components/Ui/StretchText.vue"
 
 const { tasks, ballColor } = defineProps({
     tasks: {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import KanbanLabel from "./KanbanLabel.vue"
-import StretchText from "./UI/StretchText.vue"
+import KanbanLabel from "@/components/KanbanLabel.vue"
+import StretchText from "@/components/Ui/StretchText.vue"
 </script>
 
 <template>
