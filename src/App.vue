@@ -206,12 +206,12 @@ body {
     @media (min-width: 650px) {
         min-height: 100vh;
         padding: 3rem 0;
+        padding-right: 2.2rem;
     }
 }
 
 .main {
     flex: 0 1 100%;
-    // padding: 2rem;
 }
 
 .todos {
