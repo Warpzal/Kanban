@@ -1,16 +1,12 @@
 <script lang="ts" setup>
 import { computed } from "vue"
 
-const { active, alternative } = defineProps({
-    active: {
-        default: false,
-    },
-    alternative: {
-        default: false,
-    },
-})
+const props = defineProps<{
+    active?: Boolean
+    alternative?: Boolean
+}>()
 
-const colorscheme_default = {
+const colorschemeDefault = {
     background: "transparent",
     backgroundHover: "var(--kanban-color-bg)",
     logoHover: "var(--color-primary)",
@@ -19,7 +15,7 @@ const colorscheme_default = {
     logo: "var(--color-grey)",
 }
 
-const colorscheme_active = {
+const colorschemeActive = {
     background: "var(--color-primary)",
     backgroundHover: "white",
     logoHover: "var(--color-primary)",
@@ -28,7 +24,7 @@ const colorscheme_active = {
     logo: "white",
 }
 
-const colorscheme_alternative = {
+const colorschemeAlternative = {
     background: "transparent",
     backgroundHover: "transparent",
     logoHover: "var(--text-color)",
@@ -37,10 +33,10 @@ const colorscheme_alternative = {
     logo: "var(--color-grey)",
 }
 
-const get_colors = computed(() => {
-    if (active) return colorscheme_active
-    if (alternative) return colorscheme_alternative
-    return colorscheme_default
+const getColors = computed(() => {
+    if (props.active) return colorschemeActive
+    if (props.alternative) return colorschemeAlternative
+    return colorschemeDefault
 })
 </script>
 
@@ -67,26 +63,26 @@ const get_colors = computed(() => {
     gap: 1rem;
     padding: 1.5rem;
     border-radius: 0 10rem 10rem 0;
-    background: v-bind("get_colors.background");
+    background: v-bind("getColors.background");
 
     &:hover {
-        background: v-bind("get_colors.backgroundHover");
+        background: v-bind("getColors.backgroundHover");
     }
 
     &:hover &__title,
     &:hover &__logo {
-        fill: v-bind("get_colors.logoHover");
-        color: v-bind("get_colors.titleHover");
+        fill: v-bind("getColors.logoHover");
+        color: v-bind("getColors.titleHover");
     }
 
     &__title {
         font-size: 1.5rem;
-        color: v-bind("get_colors.title");
+        color: v-bind("getColors.title");
         font-weight: bold;
     }
 
     &__logo {
-        fill: v-bind("get_colors.logo");
+        fill: v-bind("getColors.logo");
     }
 }
 </style>

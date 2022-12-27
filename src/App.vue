@@ -2,10 +2,14 @@
 import KanbanList from "@/components/KanbanList.vue"
 import KanbanBoards from "@/components/KanbanBoards.vue"
 import KanbanLogo from "@/components/KanbanLogo.vue"
-import type List from "@/types/List"
 import StretchText from "@/components/Ui/StretchText.vue"
 import Themes from "@/components/Themes.vue"
 import TopBar from "@/components/TopBar.vue"
+import type List from "@/types/List"
+import TheInput from "@/components/Ui/TheInput.vue"
+import TheTextarea from "@/components/Ui/TheTextarea.vue"
+import TheCard from "@/components/Ui/TheCard.vue"
+import TheButton from "./components/Ui/TheButton.vue"
 
 import { ref } from "vue"
 
@@ -92,6 +96,32 @@ const lists = ref<List[]>([
         </div>
         <main class="main">
             <TopBar class="desktop-only" />
+            <TheCard
+                class="my-1 ml-1"
+                style="width: 45rem; padding-left: 2rem; padding-right: 2rem"
+            >
+                <h2>Add New Task</h2>
+                <TheInput
+                    class="my-1"
+                    label="Title"
+                    :placeholder="'e.g. Start learning things'"
+                />
+                <TheTextarea label="Description" :placeholder="'e.g. things'" />
+                <TheInput
+                    class="my-1"
+                    label="Subtasks"
+                    :placeholder="'e.g. Make Coffee'"
+                />
+                <TheButton class="my-1" type="alternative"
+                    >Create Task</TheButton
+                >
+                <TheInput
+                    class="my-1"
+                    label="Status"
+                    :placeholder="'e.g. Todo'"
+                />
+                <TheButton class="my-1">Create Task</TheButton>
+            </TheCard>
             <section class="todos">
                 <KanbanList v-for="list in lists" :list="list" :key="list.id">
                 </KanbanList>
@@ -125,18 +155,6 @@ const lists = ref<List[]>([
     --kanban-color-bg: white;
 }
 
-.mobile-only {
-    @media (min-width: 651px) {
-        display: none !important;
-    }
-}
-
-.desktop-only {
-    @media (max-width: 650px) {
-        display: none !important;
-    }
-}
-
 *,
 *::after,
 *::before {
@@ -158,6 +176,57 @@ body {
     background: var(--color-bg);
     font-family: "Plus Jakarta Sans", sans-serif;
     color: var(--color-light-text);
+}
+
+.layout {
+    @media (min-width: 650px) {
+        display: flex;
+    }
+}
+
+.sidebar {
+    flex: 0 0 clamp(25rem, 30%, 28rem);
+    background: var(--color-dark-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--text-color-transparent);
+
+    @media (min-width: 650px) {
+        height: 100vh;
+        padding: 3rem 0;
+        padding-right: 2.2rem;
+    }
+}
+
+.main {
+    flex: 0 1 100%;
+}
+
+.todos {
+    padding: 1.5rem 3rem;
+    display: flex;
+    gap: 2rem;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.todos::-webkit-scrollbar {
+    display: none;
+}
+
+// UTILITY
+.mobile-only {
+    @media (min-width: 651px) {
+        display: none !important;
+    }
+}
+
+.desktop-only {
+    @media (max-width: 650px) {
+        display: none !important;
+    }
 }
 
 .py-1 {
@@ -185,45 +254,13 @@ body {
 .shadow-sm {
     box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.05);
 }
+
 .shadow-md {
     box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
 }
 
-.layout {
-    @media (min-width: 650px) {
-        display: flex;
-    }
-}
-
-.sidebar {
-    flex: 0 0 clamp(25rem, 30%, 28rem);
-    background: var(--color-dark-1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid var(--text-color-transparent);
-
-    @media (min-width: 650px) {
-        min-height: 100vh;
-        padding: 3rem 0;
-        padding-right: 2.2rem;
-    }
-}
-
-.main {
-    flex: 0 1 100%;
-}
-
-.todos {
-    padding: 1.5rem 3rem;
-    display: flex;
-    gap: 2rem;
-    overflow: auto;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-
-.todos::-webkit-scrollbar {
-    display: none;
+input,
+textarea {
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 </style>

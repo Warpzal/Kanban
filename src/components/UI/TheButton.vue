@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from "vue"
 
-const { type, textColor } = defineProps({
+const props = defineProps({
     type: String,
     textColor: {
         default: "var(--color-grey)",
@@ -9,8 +9,8 @@ const { type, textColor } = defineProps({
 })
 
 const padding = computed(() => {
-    if (type === "add") return ".4rem 1.7rem"
-    if (type === "text") return "0px"
+    if (props.type === "add") return ".4rem 1.7rem"
+    if (props.type === "text") return "0px"
     return "1.2rem 1.8rem"
 })
 </script>
@@ -22,6 +22,7 @@ const padding = computed(() => {
         :class="{
             'button--1': type == 'add' || !type,
             'button--2': type == 'text',
+            'button--3': type == 'alternative',
             'button--icon': type == 'icon',
         }"
     >
@@ -36,7 +37,9 @@ const padding = computed(() => {
 }
 
 .button {
-    width: fit-content;
+    display: block;
+    width: 100%;
+    text-align: center;
     border: none;
 }
 .button--icon {
@@ -70,6 +73,20 @@ const padding = computed(() => {
     font-weight: bold;
     &:hover {
         text-decoration: underline;
+    }
+}
+
+.button--3 {
+    gap: 1rem;
+    font-size: 1.6rem;
+    padding: v-bind(padding);
+    border-radius: 10rem;
+    background: var(--kanban-color-bg);
+    font-weight: bold;
+    color: var(--color-primary);
+    text-align: center;
+    &:hover {
+        opacity: 0.8;
     }
 }
 </style>

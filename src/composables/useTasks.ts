@@ -12,5 +12,8 @@ export function useQuery() {
         const data = JSON.stringify([...getTasks(), card])
         localStorage.setItem("tasks", data)
     }
+
+    const addTask = (task: Object) => {}
+
     return { deleteTasks, getTasks, setTasks }
 }

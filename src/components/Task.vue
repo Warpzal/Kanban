@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import Card from "@/components/Ui/Card.vue"
+import TheCard from "@/components/Ui/TheCard.vue"
 </script>
 
 <template>
-    <Card class="task shadow-sm">
+    <TheCard class="task shadow-sm">
         <p class="task__title">
             <slot name="title"></slot>
         </p>
         <p class="task__subtasks">
             <slot name="subtasks_count"></slot>
         </p>
-    </Card>
+    </TheCard>
 </template>
 
 <style lang="scss" scoped>

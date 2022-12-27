@@ -3,7 +3,7 @@ import ListTitle from "@/components/ListTitle.vue"
 import Task from "@/components/Task.vue"
 import type List from "@/types/List"
 
-const { list } = defineProps<{
+defineProps<{
     list: List
 }>()
 </script>

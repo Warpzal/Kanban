@@ -7,6 +7,7 @@ import Cheveron from "@/components/Icon/Cheveron.vue"
 import Logo from "@/components/Icon/Logo.vue"
 import Add from "@/components/Icon/Add.vue"
 import CheveronFlipped from "@/components/Icon/CheveronFlipped.vue"
+import TheCard from "./Ui/TheCard.vue"
 import Themes from "@/components/Themes.vue"
 
 import { ref } from "vue"
@@ -38,25 +39,23 @@ const toggleKanbanBoards = () => {
             <h1 class="desktop-only">Example Board</h1>
 
             <Cheveron
-                class="mobile-only"
-                @click="toggleKanbanBoards"
                 v-show="!isOpenKanbanBoards"
+                @click="toggleKanbanBoards"
+                class="mobile-only"
                 style="margin-top: 0.8rem"
             />
 
             <CheveronFlipped
-                class="mobile-only"
-                @click="toggleKanbanBoards"
                 v-show="isOpenKanbanBoards"
+                @click="toggleKanbanBoards"
+                class="mobile-only"
                 style="margin-top: 0.8rem"
             />
 
-            <Card v-show="isOpenKanbanBoards" class="kanban-boards">
+            <TheCard v-show="isOpenKanbanBoards" class="kanban-boards">
                 <KanbanBoards />
-                <div class="ml-1">
-                    <Themes style="" />
-                </div>
-            </Card>
+                <Themes />
+            </TheCard>
         </div>
 
         <div class="header__right">

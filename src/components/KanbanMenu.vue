@@ -1,15 +1,11 @@
 <script lang="ts" setup>
-import Card from "@/components/Ui/Card.vue"
+import TheCard from "@/components/Ui/TheCard.vue"
 import TheButton from "@/components/Ui/TheButton.vue"
 </script>
 <template>
-    <Card class="shadow-md">
-        <TheButton class="py-1" type="text" style="width: 100%">
-            Clear Board
-        </TheButton>
-        <TheButton class="py-1" type="text" style="width: 100%">
-            Rename Board
-        </TheButton>
+    <TheCard class="shadow-md" style="padding: none">
+        <TheButton class="py-1" type="text"> Clear Board </TheButton>
+        <TheButton class="py-1" type="text"> Rename Board </TheButton>
         <TheButton
             class="py-1"
             type="text"
@@ -26,5 +22,5 @@ import TheButton from "@/components/Ui/TheButton.vue"
         >
             Die
         </TheButton>
-    </Card>
+    </TheCard>
 </template>
