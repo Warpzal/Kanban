@@ -5,11 +5,8 @@ import KanbanLogo from "@/components/KanbanLogo.vue"
 import StretchText from "@/components/Ui/StretchText.vue"
 import Themes from "@/components/Themes.vue"
 import TopBar from "@/components/TopBar.vue"
+import AddTask from "@/components/AddTask.vue"
 import type List from "@/types/List"
-import TheInput from "@/components/Ui/TheInput.vue"
-import TheTextarea from "@/components/Ui/TheTextarea.vue"
-import TheCard from "@/components/Ui/TheCard.vue"
-import TheButton from "./components/Ui/TheButton.vue"
 
 import { ref } from "vue"
 
@@ -20,61 +17,25 @@ const lists = ref<List[]>([
         color: "cyan",
         tasks: [
             {
+                id: "dafastring",
                 title: "Work on Kanban Board",
                 description: "Please clean the house",
                 subtasks: [],
-                completed: true,
+                status: "To-do",
             },
         ],
     },
     {
-        id: "jdfafdsfla",
-        name: "Doing",
+        id: "jfdsfla",
+        name: "In Progress",
         color: "yellow",
         tasks: [
             {
-                title: "Clean your mom, and project management software",
-                description: "Please lmao lmao clean the house",
-                subtasks: [1, 2, 3],
-                completed: false,
-            },
-            {
-                title: "mom, and project management software",
-                description: "Please lmao lmao clean the house",
-                subtasks: [1, 2, 3],
-                completed: false,
-            },
-            {
-                title: "project management software",
-                description: "Please lmao lmao clean the house",
-                subtasks: [1, 2, 3, 4],
-                completed: false,
-            },
-        ],
-    },
-    {
-        id: "dsafadsf",
-        name: "Done",
-        color: "limegreen",
-        tasks: [
-            {
-                title: "Clean your mom",
-                description: "Please lmao lmao clean the house",
-                subtasks: [1, 2, 3],
-                completed: false,
-            },
-        ],
-    },
-    {
-        id: "dafsdsafadsf",
-        name: "Done",
-        color: "limegreen",
-        tasks: [
-            {
-                title: "Clean your mom",
-                description: "Please lmao lmao clean the house",
-                subtasks: [1, 2, 3],
-                completed: false,
+                id: "dafastring",
+                title: "Work on Kanban Board",
+                description: "Please clean the house",
+                subtasks: [],
+                status: "In Progress",
             },
         ],
     },
@@ -85,7 +46,6 @@ const lists = ref<List[]>([
     <div class="layout">
         <div class="sidebar">
             <div class="top">
-                <TopBar class="mobile-only" />
                 <KanbanLogo class="desktop-only ml-1 mb-2" />
                 <KanbanBoards class="desktop-only" />
             </div>
@@ -95,36 +55,18 @@ const lists = ref<List[]>([
             </div>
         </div>
         <main class="main">
+            <TopBar class="mobile-only" />
             <TopBar class="desktop-only" />
-            <TheCard
-                class="my-1 ml-1"
-                style="width: 45rem; padding-left: 2rem; padding-right: 2rem"
-            >
-                <h2>Add New Task</h2>
-                <TheInput
-                    class="my-1"
-                    label="Title"
-                    :placeholder="'e.g. Start learning things'"
-                />
-                <TheTextarea label="Description" :placeholder="'e.g. things'" />
-                <TheInput
-                    class="my-1"
-                    label="Subtasks"
-                    :placeholder="'e.g. Make Coffee'"
-                />
-                <TheButton class="my-1" type="alternative"
-                    >Create Task</TheButton
-                >
-                <TheInput
-                    class="my-1"
-                    label="Status"
-                    :placeholder="'e.g. Todo'"
-                />
-                <TheButton class="my-1">Create Task</TheButton>
-            </TheCard>
-            <section class="todos">
-                <KanbanList v-for="list in lists" :list="list" :key="list.id">
-                </KanbanList>
+            <section class="content">
+                <section class="todos">
+                    <KanbanList
+                        v-for="list in lists"
+                        :list="list"
+                        :key="list.id"
+                    >
+                    </KanbanList>
+                </section>
+                <AddTask />
             </section>
         </main>
     </div>
@@ -200,7 +142,12 @@ body {
 }
 
 .main {
+    position: relative;
     flex: 0 1 100%;
+}
+
+.content {
+    overflow-y: scroll;
 }
 
 .todos {
@@ -217,6 +164,10 @@ body {
 }
 
 // UTILITY
+.is-hoverable {
+    cursor: pointer;
+}
+
 .mobile-only {
     @media (min-width: 651px) {
         display: none !important;
@@ -237,6 +188,14 @@ body {
 .my-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-3 {
+    margin-top: 3rem;
 }
 
 .mb-2 {

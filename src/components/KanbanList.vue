@@ -30,7 +30,7 @@ defineProps<{
 .list {
     flex: 1 0 clamp(22rem, 75%, 27rem);
     padding: 0.5rem;
-    padding-bottom: 20rem;
+    padding-bottom: 12.5rem;
     user-select: none;
     &:hover {
         outline: 1px dashed var(--color-grey);

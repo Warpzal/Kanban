@@ -29,7 +29,7 @@ import TheCard from "@/components/Ui/TheCard.vue"
     }
 
     &__subtasks {
-        padding-top: 10px;
+        padding-top: 1rem;
         font-size: 1.2rem;
         font-weight: bold;
         color: var(--color-grey);

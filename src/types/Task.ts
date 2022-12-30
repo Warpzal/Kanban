@@ -1,8 +1,9 @@
 type Task = {
+    id: string
     title: string
     description: string
     subtasks: any[]
-    completed: boolean
+    status: string
 }
 
 export default Task

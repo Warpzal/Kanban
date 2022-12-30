@@ -7,7 +7,7 @@ import Cheveron from "@/components/Icon/Cheveron.vue"
 import Logo from "@/components/Icon/Logo.vue"
 import Add from "@/components/Icon/Add.vue"
 import CheveronFlipped from "@/components/Icon/CheveronFlipped.vue"
-import TheCard from "./Ui/TheCard.vue"
+import TheCard from "@/components/Ui/TheCard.vue"
 import Themes from "@/components/Themes.vue"
 
 import { ref } from "vue"
@@ -66,7 +66,11 @@ const toggleKanbanBoards = () => {
                 </div>
             </TheButton>
             <ElipseVertical @click="toggleMenu" />
-            <KanbanMenu v-show="isOpenMenu" class="kanban-menu" />
+            <KanbanMenu
+                v-show="isOpenMenu"
+                class="kanban-menu"
+                style="max-width: 20rem"
+            />
         </div>
     </header>
 </template>
@@ -85,7 +89,7 @@ const toggleKanbanBoards = () => {
     z-index: 100;
     user-select: none; /* Standard syntax */
     position: absolute;
-    margin-top: 2rem;
+    margin-top: 2.2rem;
     padding-bottom: 1rem;
     padding-top: 1rem;
     padding-right: 1rem;
