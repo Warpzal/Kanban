@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import TheCard from "./Ui/TheCard.vue"
-import TheInput from "./Ui/TheInput.vue"
-import TheDatalist from "./Ui/TheDatalist.vue"
-import TheTextarea from "./Ui/TheTextarea.vue"
-import TheButton from "./Ui/TheButton.vue"
-import CloseBtn from "./Icon/CloseBtn.vue"
+import TheCard from "@/components/Ui/TheCard.vue"
+import TheInput from "@/components/Ui/TheInput.vue"
+import TheDatalist from "@/components/Ui/TheDatalist.vue"
+import TheTextarea from "@/components/Ui/TheTextarea.vue"
+import TheButton from "@/components/Ui/TheButton.vue"
+import CloseBtn from "@/components/Icon/CloseBtn.vue"
 import type Task from "@/types/Task"
 import { ref } from "vue"
 
