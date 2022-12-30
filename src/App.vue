@@ -2,7 +2,7 @@
 import KanbanList from "@/components/KanbanList.vue"
 import KanbanBoards from "@/components/KanbanBoards.vue"
 import KanbanLogo from "@/components/KanbanLogo.vue"
-import StretchText from "./components/Ui/StretchText.vue"
+// import StretchText from "./components/Ui/StretchText.vue"
 import Themes from "@/components/Themes.vue"
 import TopBar from "@/components/TopBar.vue"
 import AddTask from "@/components/AddTask.vue"
@@ -50,7 +50,7 @@ const lists = ref<List[]>([
                 <KanbanBoards class="desktop-only" />
             </div>
             <div class="bottom desktop-only">
-                <StretchText class="ml-1 py-1">Hide Sidebar</StretchText>
+                <!-- <StretchText class="ml-1 py-1">Hide Sidebar</StretchText> -->
                 <Themes style="margin: 0 auto; width: 90%" />
             </div>
         </div>
